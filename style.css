@@ -1,0 +1,8 @@
+div {
+	border: 1px solid black;
+	margin: 30px;
+	padding: 10px;
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+}
