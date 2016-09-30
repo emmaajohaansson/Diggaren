@@ -9,6 +9,10 @@ div {
 }
 body {
     background-color: #DFDFDF;
+    margin: 0;
+}
+h1 {
+    margin-left: 21px;
 }
 button {
     float: right;
