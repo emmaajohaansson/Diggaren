@@ -1,3 +1,14 @@
+body {
+    background-image:url(music-for-presentation.jpg);
+    background-size: cover;
+    color: #C9C7C9;
+    margin: 0;
+}
+header{
+    /*background: rgba(0, 0, 0, 0.5);*/
+    height: 46px;
+    margin-top: -28px;
+}
 #song_player {
 	border: 1px solid black;
 	margin: 30px;
@@ -5,12 +16,12 @@
 	width: 500px;
 	margin-left: auto;
 	margin-right: auto;
-    background-color: cadetblue
+    background-color: #3E0030;
 }
 #song_info{
     border: 1px solid black;
 	width: 500px;
-	background-color: cadetblue
+	background-color: #5D0F4C;
 }
 #playlist{
     border: 1px solid black;
@@ -20,14 +31,9 @@
     height: 450px;
 	margin-left: auto;
 	margin-right: auto;
-    background-color: cadetblue
+    background-color: #3E0030;
 }
-body {
-    background-image:url(music-for-presentation.jpg);
-    background-size: cover;
-    
-    margin: 0;
-}
+
 h1 {
     margin-left: 21px;
     font-size: 40px;
