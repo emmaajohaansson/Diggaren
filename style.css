@@ -1,18 +1,36 @@
-div {
+#song_player {
 	border: 1px solid black;
 	margin: 30px;
 	padding: 10px;
-	width: 1000px;
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+    background-color: cadetblue
+}
+#song_info{
+    border: 1px solid black;
+	width: 500px;
+	background-color: cadetblue
+}
+#playlist{
+    border: 1px solid black;
+	margin: 30px;
+	padding: 10px;
+	width: 600px;
+    height: 450px;
 	margin-left: auto;
 	margin-right: auto;
     background-color: cadetblue
 }
 body {
-    background-color: #DFDFDF;
+    background-image:url(music-for-presentation.jpg);
+    background-size: cover;
+    
     margin: 0;
 }
 h1 {
     margin-left: 21px;
+    font-size: 40px;
 }
 button {
     float: right;
