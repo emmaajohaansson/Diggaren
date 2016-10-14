@@ -26,7 +26,7 @@ function sr_songs() {
         },
         success: function (response) {
             console.log(response);
-            title = $(response).find("nextsong title");
+            title = $(response).find("song title");
             if (title.text() == "") {
                 $("#song_title").append("Ingen låt spelas just nu");
                 $("#song_artist").append("");
@@ -57,6 +57,9 @@ function spotify_song(title) {
             spotify_song_url = response.tracks.items[0].external_urls.spotify;
             $("#spotify_song_url").append(spotify_song_url);
             console.log(spotify_song_url);
+            spotify_song_uri = response.tracks.items[0].uri;
+            document.getElementById("spotify_song_uri").src = "https://embed.spotify.com/?uri=" + spotify_song_uri;
+            console.log(spotify_song_uri);
         }
     });
 };
