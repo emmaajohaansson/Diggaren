@@ -80,7 +80,7 @@ function song_player_media(song) {
 function sr_audio_old_songs() {
     $.ajax({
         type: "GET",
-        url: "http://api.sr.se/api/v2/playlists/getplaylistbychannelid?id=164&size=40",
+        url: "http://api.sr.se/api/v2/playlists/getplaylistbychannelid?id=164&size=10",
         dataType: "xml",
         error: function (response) {
             alert('Error: There was a problem processing your request, please refresh the browser and try again');
@@ -91,9 +91,33 @@ function sr_audio_old_songs() {
             var list= "";
             var x = response.getElementsByTagName("song");
             for (i = 0; i <x.length; i++){
-                list += "<li>" + x[i].getElementsByTagName("title")[0].childNodes[0].nodeValue + "</li>";
+                list += "<li onclick=spotify_old_song(this.id) id=" + x[i].getElementsByTagName("title")[0].childNodes[0].nodeValue + ">" + x[i].getElementsByTagName("title")[0].childNodes[0].nodeValue + "</li>";
             }
             document.getElementById("old_songs_title").innerHTML = list;
+        }
+    });
+};
+
+function spotify_old_song(song_name) {
+    console.log(song_name);
+    spotify_song_url_append(song_name);
+    spotify_old_song_url_var = "<iframe src=https://embed.spotify.com/?uri=spotify%3Atrack%3A" + spotify_song_uri + " width=300 height=80 frameborder=0 allowtransparency=true></iframe>";
+    console.log(spotify_old_song_url_var);
+    document.getElementById(this.id).innerHTML = spotify_old_song_url_var;
+}
+
+function spotify_song_url_append(title) {
+    $.ajax({
+        type: "GET",
+        url: "https://api.spotify.com/v1/search?q=" + title + "&type=track,artist,album&market=SE&limit=1",
+        dataType: "json",
+        error: function (response) {
+            alert('Error: There was a problem processing your request, please refresh the browser and try again');
+        },
+        success: function (response) {
+            spotify_song_url = response.tracks.items[0].uri;
+            console.log(spotify_song_url)
+            return spotify_song_url;
         }
     });
 };
