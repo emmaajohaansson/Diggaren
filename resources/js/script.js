@@ -11,6 +11,7 @@ function sr_audio_song(){
             song = $(response).find( "url" );
             $( "#song_player" ).append( song.text() );
             console.log(song.text());
+            song_player_media(song.text())
         }
     });
 };
@@ -26,13 +27,14 @@ function sr_songs(){
         success: function (response) {
             console.log(response);
             title = $(response).find( "song title" );
-			if (title = "") {
-				$( "#song_title" ).append("Ingen låt spelas just nu");
+			if (title.text() == "") {
+                $( "#song_title" ).append("Ingen låt spelas just nu");
 				$( "#song_artist" ).append("");
 				$( "#song_album" ).append("");
+                spotify_song("eminem");//provisoriskt ifall ingen låt spelas
 			}
 			else {
-				$( "#song_title" ).append( title.text() );
+                $( "#song_title" ).append( title.text() );
 				artist = $(response).find( "song artist" );
 				$( "#song_artist" ).append( artist.text() );
 				album = $(response).find( "song albumname" );
@@ -54,15 +56,26 @@ function spotify_song(title){
         },
         success: function (response) {
             console.log(response);
-                    track_spotify = response["tracks"]
-                    track_spotify_url = track_spotify[uri]
-                    console.log(track_spotify)
-                    console.log(track_spotify_url)
-            
+            value = response.tracks.items[0].external_urls.spotify;
+            console.log(value)
                }
         }); 
     };
->>>>>>> origin/master
+
+function song_player_media(song){
+          $("#song_player").jPlayer({
+           ready: function () {
+            $(this).jPlayer("setMedia", {
+             m4a: song,
+             oga: "/media/mysound.ogg"
+            });
+           },
+           swfPath: "/js",
+           supplied: "m4a, oga"
+          });
+};
+
+
 
 sr_songs()
 sr_audio_song()
