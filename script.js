@@ -46,6 +46,11 @@ function sr_audio_song(){
                 },
                 success: function (response) {
             console.log(response);
+                    track_spotify = response["tracks"]
+                    track_spotify_url = track_spotify[uri]
+                    console.log(track_spotify)
+                    console.log(track_spotify_url)
+            
                }
         }); 
     };
