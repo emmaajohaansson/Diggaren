@@ -2,10 +2,27 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<link href="style.css" type="text/css" rel="stylesheet">
+		<link href="resources/css/style.css" type="text/css" rel="stylesheet">
 		<title>SoundCheck</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="script.js"></script>
+		<script src="resources/js/script.js"></script>
+		<script src="resources/js/jPlayer-2.9.2/src/javascript/jplayer/jquery.jplayer.js"></script>
+        
+        <script type="text/javascript">
+         $(document).ready(function(){
+          $("#song_player").jPlayer({
+           ready: function () {
+            $(this).jPlayer("setMedia", {
+             m4a: "/media/mysound.mp4",
+             oga: "/media/mysound.ogg"
+            });
+           },
+           swfPath: "/js",
+           supplied: "m4a, oga"
+          });
+         });
+       </script>
+        
 	</head>
 	<body>
 		<header>
@@ -14,6 +31,11 @@
 		</header>
 		<section>
 			<div id="song_audio">
+                <div id="audio_player"></div>
+                <div id="jp_container_1">
+                 <a href="#" class="jp-play">Play</a>
+                 <a href="#" class="jp-pause">Pause</a>
+                </div>
                 <audio id="song_player"></audio>
 				<p>
 					Här ska finnas en spelare till låten
