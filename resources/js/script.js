@@ -87,13 +87,34 @@ function sr_audio_old_songs() {
         },
         success: function (response) {
             console.log(response);
-            old_songs_titles = $(response).find("song title");
-            $("#old_songs_title").append(old_songs_titles.text());
-            console.log(old_songs_titles.text())
+            var i;
+            var list= "";
+            var x = response.getElementsByTagName("song");
+            for (i = 0; i <x.length; i++){
+                list += "<li>" + x[i].getElementsByTagName("title")[0].childNodes[0].nodeValue + "</li>";
+            }
+            document.getElementById("old_songs_title").innerHTML = list;
         }
     });
 };
 
+function spotify_create_playlist() {
+    $.ajax({
+        type: "GET",
+        url: "https://api.spotify.com /v1/users/{user_id}/playlists",
+        dataType: "xml",
+        error: function (response) {
+            alert('Error: There was a problem processing your request, please refresh the browser and try again');
+        },
+        success: function (response) {
+            console.log(response);
+            song = $(response).find("url");
+            $("#song_player").append(song.text());
+            console.log(song.text());
+            song_player_media(song.text())
+        }
+    });
+};
 
 sr_songs()
 sr_audio_song()
