@@ -8,8 +8,9 @@ function sr_audio_song(){
                 },
                 success: function (response) {
             console.log(response);
-                    $song = $(response).find( "url" );
-                    $( "#song_player" ).append( $song.text() );
+                    song = $(response).find( "url" );
+                    $( "#song_player" ).append( song.text() );
+                    console.log(song.text());
                }
         });
     };
@@ -24,10 +25,13 @@ function sr_audio_song(){
                 },
                 success: function (response) {
             console.log(response);
-                title = $(response).find( "title" );
+                title = $(response).find( "song title" );
             $( "#song_title" ).append( title.text() );
-                artist = $(response).find( "artist" );
+                artist = $(response).find( "song artist" );
             $( "#song_artist" ).append( artist.text() );
+                album = $(response).find( "song albumname" );
+            $( "#song_album" ).append( album.text() );
+                    spotify_song(title.text());
                }
         });
     };
@@ -48,4 +52,3 @@ function sr_audio_song(){
 
 sr_songs()
 sr_audio_song()
-spotify_song(eminem)
