@@ -41,3 +41,7 @@ h1 {
 button {
     float: right;
 }
+
+#old_songs_title li{
+    cursor: pointer;
+}

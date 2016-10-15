@@ -54,6 +54,8 @@ function spotify_song(title) {
         },
         success: function (response) {
             console.log(response);
+            spotify_song_url = response.tracks.items[0].external_urls.spotify;
+            $("#spotify_song_url").append(spotify_song_url);
             spotify_song_uri = response.tracks.items[0].uri;
             document.getElementById("spotify_song_uri").src = "https://embed.spotify.com/?uri=" + spotify_song_uri;
         }
@@ -112,7 +114,7 @@ function spotify_song_url_append(title) {
         success: function (response) {
             spotify_song_url = response.tracks.items[0].uri;
             console.log(spotify_song_url);
-            spotify_old_song_url = "https://embed.spotify.com/?uri=" + spotify_song_url;
+            spotify_old_song_url = "https://embed.spotify.com/?uri=spotify%3Atrack%3A" + spotify_song_url;
             title_new = title.split(" ").join("+");
             console.log(title_new)
             console.log(spotify_old_song_url);
