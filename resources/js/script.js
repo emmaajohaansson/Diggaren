@@ -16,6 +16,11 @@ function sr_audio_song() {
     });
 };
 
+function song_player_media(song) {
+    radio_player = "<audio controls=controls><source src=" + song + " type=audio/ogg /><source src=" + song + " type=audio/mpeg /></audio>";
+    $("#radio_player").append(radio_player);
+};
+
 function sr_songs() {
     $.ajax({
         type: "GET",
@@ -57,7 +62,13 @@ function spotify_song(title) {
             spotify_song_url = response.tracks.items[0].external_urls.spotify;
             $("#spotify_song_url").append(spotify_song_url);
             spotify_song_uri = response.tracks.items[0].uri;
-            document.getElementById("spotify_song_uri").src = "https://embed.spotify.com/?uri=" + spotify_song_uri;
+            spotify_song_uri_new = "https://embed.spotify.com/?uri=" + spotify_song_uri;
+            iframe = document.createElement("iframe");
+            iframe.frameBorder=0;
+            iframe.width="300px";
+            iframe.height="80px";
+            iframe.setAttribute("src", spotify_song_uri_new);
+            document.getElementById("spotify_current_song").appendChild(iframe);
         }
     });
 };
@@ -77,8 +88,13 @@ function sr_audio_old_songs() {
             var x = response.getElementsByTagName("song");
             for (i = 0; i <x.length; i++){
                 song_name = x[i].getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                start_time_song = x[i].getElementsByTagName("starttimeutc")[0].childNodes[0].nodeValue;
+                stop_time_song = x[i].getElementsByTagName("stoptimeutc")[0].childNodes[0].nodeValue;
+                artist_song = x[i].getElementsByTagName("artist")[0].childNodes[0].nodeValue;
+                start_time_song_new = start_time_song.substring(11, 16);
+                stop_time_song_new = stop_time_song.substring(11, 16);
                 song_name_new = song_name.split(" ").join("+");
-                list += "<li onclick=spotify_old_song(this.id) id=" + song_name_new + ">" + song_name + "</li>";
+                list += "<li onclick=spotify_old_song(this.id) id=" + song_name_new + ">&quot;" + song_name + "&quot; av &quot;" + artist_song + "&quot; spelades mellan: " + start_time_song_new + " - " + stop_time_song_new + "</li>";
             }
             document.getElementById("old_songs_title").innerHTML = list;
         }
@@ -103,10 +119,8 @@ function spotify_song_url_append(title) {
             console.log(spotify_song_url);
             spotify_old_song_url = "https://embed.spotify.com/?uri=" + spotify_song_url;
             title_new = title.split(" ").join("+");
-            console.log(title_new)
             console.log(spotify_old_song_url);
             iframe = document.createElement("iframe");
-            console.log(iframe);
             iframe.frameBorder=0;
             iframe.width="300px";
             iframe.height="80px";
