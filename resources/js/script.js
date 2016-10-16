@@ -62,19 +62,6 @@ function spotify_song(title) {
     });
 };
 
-function song_player_media(song) {
-    $("#song_player").jPlayer({
-        ready: function () {
-            $(this).jPlayer("setMedia", {
-                m4a: song,
-                oga: "/media/mysound.ogg"
-            });
-        },
-        swfPath: "/js",
-        supplied: "m4a, oga"
-    });
-};
-
 function sr_audio_old_songs() {
     $.ajax({
         type: "GET",
