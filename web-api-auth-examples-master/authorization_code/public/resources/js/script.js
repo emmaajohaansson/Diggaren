@@ -135,29 +135,14 @@ function spotify_user_profile() {
         type: "GET",
         url: "https://api.spotify.com/v1/me",
         dataType: "json",
+        headers: { 'Authorization': 'Bearer ' + "BQBWH264kW4g1PBzfzLXRCQKrZfZPwQVe6GTcpuRwNBHxdJ9QuPhoujMa0f1t_9AzIaxv5a6g1o_-rqqxqX1DWI-qqplSnc5-SSkfu08xKW9POzfc2WDtbLMyDT9H1AZS6ouJPOMAGbHyH0CMgGSvyysFoevM5dH8GNyuK0295bUnAbzko3Kp72H5GKVNyhwgcRAEZUeBJ3La53K8DzbrVndoEmwUfC-jcG_qM_xrUP6NZU0_x9fa4CKHwg" },
         error: function (response) {
             alert('Error: There was a problem processing your request, please refresh the browser and try again');
         },
         success: function (response) {
             console.log(response);
-        }
-    });
-};
-
-function spotify_create_playlist() {
-    $.ajax({
-        type: "GET",
-        url: "https://api.spotify.com /v1/users/{user_id}/playlists",
-        dataType: "xml",
-        error: function (response) {
-            alert('Error: There was a problem processing your request, please refresh the browser and try again');
-        },
-        success: function (response) {
-            console.log(response);
-            song = $(response).find("url");
-            $("#song_player").append(song.text());
-            console.log(song.text());
-            song_player_media(song.text())
+            spotify_profile_id = response.id;
+            console.log(spotify_profile_id);
         }
     });
 };
@@ -165,4 +150,4 @@ function spotify_create_playlist() {
 sr_songs()
 sr_audio_song()
 sr_audio_old_songs()
-spotify_user_profile()
+spotify_user_profile()  

@@ -3,6 +3,9 @@
   <head>
     <title>Example of the Authorization Code flow with Spotify</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link href="resources/css/style.css" type="text/css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="resources/js/script.js"></script>
     <style type="text/css">
       #login, #loggedin {
         display: none;
@@ -30,6 +33,35 @@
         <button class="btn btn-default" id="obtain-new-token">Obtain new token using the refresh token</button>
       </div>
     </div>
+    <header>
+            <button id="login_button" value="Logga in">Logga in</button>
+            <h1>SoundCheck</h1>
+		</header>
+		<section>
+			<div id="song_audio">
+				<div id="radio_player">
+				</div>
+                <div id="song_info">
+                    <ul>
+                        <li id="song_title">Låt: </li>
+                        <li id="song_album">Album: </li>
+                        <li id="song_artist">Artist: </li>
+                        <li id="spotify_current_song"></li>
+                    </ul>
+                </div>
+			</div>
+			<div id="playlist">
+				<h2>Tidigare spelat</h2>
+				<div>
+                    <ul id="old_songs_title"></ul>
+                </div>
+			</div>
+			<div>
+			Ruta för Spotify (inloggning, låt, möjlighet att lägga till låt i sin spellista)
+			</div>
+		</section>
+		<footer>
+		</footer>
 
     <script id="user-profile-template" type="text/x-handlebars-template">
       <h1>Logged in as {{display_name}}</h1>
