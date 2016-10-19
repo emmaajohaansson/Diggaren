@@ -33,14 +33,13 @@ h1 {
 	list-style-type: none;
 }
 
-#sr_picture {
-	height: 254px;
-	width: 500px;
-}
-
 #sr_picture > img{
 	height: 250px;
 	width: 300px;
+	margin-left: 20%;
+}
+
+#radio_player {
 	margin-left: 20%;
 }
 
