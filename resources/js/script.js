@@ -8,9 +8,11 @@ function sr_audio_song() {
         },
         success: function (response) {
             console.log(response);
-            picture = $(response).find("image");
-			console.log(picture.text);
-			//$("#sr_picture").append(picture));
+            find_picture = $(response).find("image");
+			console.log(find_picture.text());
+			sr_picture = document.createElement("img");
+			sr_picture.setAttribute("src", find_picture.text());
+			$("#sr_picture").append(sr_picture);
             song = $(response).find("url");
             console.log(song.text());
             song_player_media(song.text())
