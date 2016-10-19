@@ -62,7 +62,6 @@ function spotify_song(title){
                }
         }); 
     };
->>>>>>> origin/master
 
 sr_songs()
 sr_audio_song()
