@@ -18,6 +18,11 @@ header{
 	margin-right: auto;
     background-color: #3E0030;
 }
+
+#current_song_list {
+	list-style-type: none;
+}
+
 #song_info{
     border: 1px solid black;
 	width: 500px;

@@ -153,6 +153,9 @@ function spotify_create_playlist() {
         },
         success: function (response) {
             console.log(response);
+			picture = $(response).find("image");
+			console.log(picture.text);
+			//$("#sr_picture").append(picture));
             song = $(response).find("url");
             $("#song_player").append(song.text());
             console.log(song.text());
