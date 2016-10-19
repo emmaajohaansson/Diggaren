@@ -134,43 +134,6 @@ function spotify_song_url_append(title) {
     });
 };
 
-/*function spotify_user_profile() {
-    $.ajax({
-        type: "GET",
-        url: "https://api.spotify.com/v1/me",
-        dataType: "json",
-        error: function (response) {
-            alert('Error: There was a problem processing your request, please refresh the browser and try again');
-        },
-        success: function (response) {
-            console.log(response);
-        }
-    });
-};
-*/
-
-/*function spotify_create_playlist() {
-    $.ajax({
-        type: "GET",
-        url: "https://api.spotify.com /v1/users/{user_id}/playlists",
-        dataType: "xml",
-        error: function (response) {
-            alert('Error: There was a problem processing your request, please refresh the browser and try again');
-        },
-        success: function (response) {
-            console.log(response);
-			picture = $(response).find("image");
-			console.log(picture.text);
-			//$("#sr_picture").append(picture));
-            song = $(response).find("url");
-            $("#song_player").append(song.text());
-            console.log(song.text());
-            song_player_media(song.text())
-        }
-    });
-};
-*/
-
 sr_songs()
 sr_audio_song()
 sr_audio_old_songs()
