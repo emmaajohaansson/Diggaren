@@ -9,6 +9,12 @@ header{
     height: 46px;
     margin-top: -28px;
 }
+
+h1 {
+    margin-left: 21px;
+    font-size: 40px;
+}
+
 #song_audio {
 	border: 1px solid black;
 	margin: 30px;
@@ -27,6 +33,17 @@ header{
 	list-style-type: none;
 }
 
+#sr_picture {
+	height: 254px;
+	width: 500px;
+}
+
+#sr_picture > img{
+	height: 250px;
+	width: 300px;
+	margin-left: 20%;
+}
+
 #song_info{
     border: 1px solid black;
 	width: 500px;
@@ -43,15 +60,7 @@ header{
     background-color: #3E0030;
 }
 
-h1 {
-    margin-left: 21px;
-    font-size: 40px;
-}
-button {
-    float: right;
-}
-
-#old_songs_title li{
+#old_songs_title > li{
     cursor: pointer;
     list-style: none;
 }
