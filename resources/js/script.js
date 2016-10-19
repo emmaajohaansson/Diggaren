@@ -88,9 +88,12 @@ function sr_audio_old_songs() {
                 song_name = x[i].getElementsByTagName("title")[0].childNodes[0].nodeValue;
                 start_time_song = x[i].getElementsByTagName("starttimeutc")[0].childNodes[0].nodeValue;
                 artist_song = x[i].getElementsByTagName("artist")[0].childNodes[0].nodeValue;
-                start_time_song_new = start_time_song.substring(11, 16);
+                start_time_song_correction = start_time_song.substring(11, 13);
+                start_time_song_correction =+ start_time_song_correction + 2;
+                start_time_song_new = start_time_song.substring(13, 16);
+                start_time_song_correction += start_time_song_new;
                 song_name_new = song_name.split(" ").join("+");
-                list += "<li onclick=spotify_old_song(this.id) id=" + song_name_new + "&quot;>" + start_time_song_new + " - &quot;" + song_name + "&quot; av " + artist_song + "</li>";
+                list += "<li onclick=spotify_old_song(this.id) id=" + song_name_new + "&quot;>" + start_time_song_correction + " - &quot;" + song_name + "&quot; av " + artist_song + "</li>";
             }
             document.getElementById("old_songs_title").innerHTML = list;
         }
