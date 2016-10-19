@@ -132,7 +132,7 @@ function spotify_song_url_append(title) {
     });
 };
 
-function spotify_user_profile() {
+/*function spotify_user_profile() {
     $.ajax({
         type: "GET",
         url: "https://api.spotify.com/v1/me",
@@ -145,8 +145,9 @@ function spotify_user_profile() {
         }
     });
 };
+*/
 
-function spotify_create_playlist() {
+/*function spotify_create_playlist() {
     $.ajax({
         type: "GET",
         url: "https://api.spotify.com /v1/users/{user_id}/playlists",
@@ -166,8 +167,8 @@ function spotify_create_playlist() {
         }
     });
 };
+*/
 
 sr_songs()
 sr_audio_song()
 sr_audio_old_songs()
-spotify_user_profile()
