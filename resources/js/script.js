@@ -74,7 +74,7 @@ function spotify_song(title) {
 function sr_audio_old_songs() {
     $.ajax({
         type: "GET",
-        url: "http://api.sr.se/api/v2/playlists/getplaylistbychannelid?id=164&size=10",
+        url: "http://api.sr.se/api/v2/playlists/getplaylistbychannelid?id=164&size=20",
         dataType: "xml",
         error: function (response) {
             alert('Error: There was a problem processing your request, please refresh the browser and try again');
@@ -92,7 +92,7 @@ function sr_audio_old_songs() {
                 start_time_song_new = start_time_song.substring(11, 16);
                 stop_time_song_new = stop_time_song.substring(11, 16);
                 song_name_new = song_name.split(" ").join("+");
-                list += "<li onclick=spotify_old_song(this.id) id=" + song_name_new + ">&quot;" + song_name + "&quot; av &quot;" + artist_song + "&quot; spelades mellan: " + start_time_song_new + " - " + stop_time_song_new + "</li>";
+                list += "<li onclick=spotify_old_song(this.id) id=" + song_name_new + ">&quot;" + song_name + "&quot; av " + artist_song + " spelades mellan: " + start_time_song_new + " - " + stop_time_song_new + "</li>";
             }
             document.getElementById("old_songs_title").innerHTML = list;
         }
