@@ -87,12 +87,10 @@ function sr_audio_old_songs() {
             for (i = 0; i <x.length; i++){
                 song_name = x[i].getElementsByTagName("title")[0].childNodes[0].nodeValue;
                 start_time_song = x[i].getElementsByTagName("starttimeutc")[0].childNodes[0].nodeValue;
-                stop_time_song = x[i].getElementsByTagName("stoptimeutc")[0].childNodes[0].nodeValue;
                 artist_song = x[i].getElementsByTagName("artist")[0].childNodes[0].nodeValue;
                 start_time_song_new = start_time_song.substring(11, 16);
-                stop_time_song_new = stop_time_song.substring(11, 16);
                 song_name_new = song_name.split(" ").join("+");
-                list += "<li onclick=spotify_old_song(this.id) id=" + song_name_new + ">&quot;" + song_name + "&quot; av " + artist_song + " spelades mellan: " + start_time_song_new + " - " + stop_time_song_new + "</li>";
+                list += "<li onclick=spotify_old_song(this.id) id=" + song_name_new + "&quot;>" + start_time_song_new + " - &quot;" + song_name + "&quot; av " + artist_song + "</li>";
             }
             document.getElementById("old_songs_title").innerHTML = list;
         }

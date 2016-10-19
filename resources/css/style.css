@@ -44,4 +44,5 @@ button {
 
 #old_songs_title li{
     cursor: pointer;
+    list-style: none;
 }
