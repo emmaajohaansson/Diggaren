@@ -9,7 +9,6 @@ function sr_audio_song() {
         success: function (response) {
             console.log(response);
             song = $(response).find("url");
-            $("#song_player").append(song.text());
             console.log(song.text());
             song_player_media(song.text())
         }
@@ -60,7 +59,6 @@ function spotify_song(title) {
         success: function (response) {
             console.log(response);
             spotify_song_url = response.tracks.items[0].external_urls.spotify;
-            $("#spotify_song_url").append(spotify_song_url);
             spotify_song_uri = response.tracks.items[0].uri;
             spotify_song_uri_new = "https://embed.spotify.com/?uri=" + spotify_song_uri;
             iframe = document.createElement("iframe");
