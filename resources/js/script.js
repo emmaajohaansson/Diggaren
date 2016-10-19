@@ -107,8 +107,17 @@ function sr_audio_old_songs() {
 
 function spotify_old_song(song_name) {
     song_name_new = song_name.split("+").join(" ");
-    spotify_song_url_append(song_name_new);
-}
+    song_name_shown = "";
+    song_name_shown += song_name + "shown";
+    console.log(song_name_shown);
+    console.log(song_name);
+    if ($(song_name_shown).length) {
+        
+    }
+    else{
+        spotify_song_url_append(song_name_new);
+    };
+};
 
 function spotify_song_url_append(title) {
     $.ajax({
@@ -120,14 +129,13 @@ function spotify_song_url_append(title) {
         },
         success: function (response) {
             spotify_song_url = response.tracks.items[0].uri;
-            console.log(spotify_song_url);
             spotify_old_song_url = "https://embed.spotify.com/?uri=" + spotify_song_url;
             title_new = title.split(" ").join("+");
-            console.log(spotify_old_song_url);
             iframe = document.createElement("iframe");
             iframe.frameBorder=0;
             iframe.width="300px";
             iframe.height="80px";
+            iframe.id=title_new + "shown";
             iframe.setAttribute("src", spotify_old_song_url);
             document.getElementById(title_new).appendChild(iframe);
         }
