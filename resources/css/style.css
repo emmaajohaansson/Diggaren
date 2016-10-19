@@ -23,6 +23,10 @@ header{
 	list-style-type: none;
 }
 
+#current_song_list {
+	list-style-type: none;
+}
+
 #song_info{
     border: 1px solid black;
 	width: 500px;
