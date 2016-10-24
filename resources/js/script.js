@@ -46,8 +46,7 @@ function sr_songs() {
                 $("#song_artist").append(artist.text());
                 album = $(response).find("song albumname");
                 $("#song_album").append(album.text());
-                spotify_song(title.text(), artist.text());
-                title_artist = title.text() + " " + artist.text();
+                spotify_song(title.text());
             }
 
         }
@@ -57,7 +56,7 @@ function sr_songs() {
 function spotify_song(title) {
     $.ajax({
         type: "GET",
-        url: "https://api.spotify.com/v1/search?q=" + title + artist + "&type=track,artist,album&market=SE&limit=1",
+        url: "https://api.spotify.com/v1/search?q=" + title + "&type=track,artist,album&market=SE&limit=1",
         dataType: "json",
         error: function (response) {
             alert('Error: There was a problem processing your request, please refresh the browser and try again');
