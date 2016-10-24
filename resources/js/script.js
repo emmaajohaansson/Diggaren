@@ -107,16 +107,7 @@ function sr_audio_old_songs() {
 
 function spotify_old_song(song_name) {
     song_name_new = song_name.split("+").join(" ");
-    song_name_shown = "";
-    song_name_shown += song_name + "shown";
-    console.log(song_name_shown);
-    console.log(song_name);
-    if ($(song_name_shown).length) {
-        
-    }
-    else{
         spotify_song_url_append(song_name_new);
-    };
 };
 
 function spotify_song_url_append(title) {
@@ -135,7 +126,6 @@ function spotify_song_url_append(title) {
             iframe.frameBorder=0;
             iframe.width="300px";
             iframe.height="80px";
-            iframe.id=title_new + "shown";
             iframe.setAttribute("src", spotify_old_song_url);
             document.getElementById(title_new).appendChild(iframe);
         }
