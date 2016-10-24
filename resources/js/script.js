@@ -39,24 +39,21 @@ function sr_songs() {
             if (title.text() == "") {
                 $("#song_title").append("Ingen låt spelas just nu");
                 $("#song_artist").append("");
-                $("#song_album").append("");
             } else {
                 $("#song_title").append(title.text());
                 artist = $(response).find("song artist");
                 $("#song_artist").append(artist.text());
-                album = $(response).find("song albumname");
-                $("#song_album").append(album.text());
-                spotify_song(title.text());
+                spotify_song(title.text(), artist.text());
+                console.log(title.text() + " " + artist.text());
             }
-
         }
     });
 };
 
-function spotify_song(title) {
+function spotify_song(title, artist) {
     $.ajax({
         type: "GET",
-        url: "https://api.spotify.com/v1/search?q=" + title + "&type=track,artist,album&market=SE&limit=1",
+        url: "https://api.spotify.com/v1/search?q=track:" + title + "%20artist:" + artist + "&type=track,artist,album&market=SE&limit=1",
         dataType: "json",
         error: function (response) {
             alert('Error: There was a problem processing your request, please refresh the browser and try again');
@@ -98,7 +95,7 @@ function sr_audio_old_songs() {
                 start_time_song_new = start_time_song.substring(13, 16);
                 start_time_song_correction += start_time_song_new;
                 song_name_new = song_name.split(" ").join("+");
-                list += "<li onclick=spotify_old_song(this.id) id=" + song_name_new + "&quot;>" + start_time_song_correction + " - &quot;" + song_name + "&quot; av " + artist_song + "</li>";
+                list += "<li onclick=spotify_old_song(this.id) id=&quot;" + song_name_new + "&quot;>" + start_time_song_correction + " - &quot;" + song_name + "&quot; av " + artist_song + "</li>";
             }
             document.getElementById("old_songs_title").innerHTML = list;
         }
@@ -107,7 +104,7 @@ function sr_audio_old_songs() {
 
 function spotify_old_song(song_name) {
     song_name_new = song_name.split("+").join(" ");
-        spotify_song_url_append(song_name_new);
+    spotify_song_url_append(song_name_new);
 };
 
 function spotify_song_url_append(title) {
