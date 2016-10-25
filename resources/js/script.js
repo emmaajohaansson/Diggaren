@@ -87,6 +87,7 @@ function sr_audio_old_songs() {
             var list= "";
             var x = response.getElementsByTagName("song");
             for (i = 0; i <x.length; i++){
+                list = "";
                 song_name = x[i].getElementsByTagName("title")[0].childNodes[0].nodeValue;
                 start_time_song = x[i].getElementsByTagName("starttimeutc")[0].childNodes[0].nodeValue;
                 artist_song = x[i].getElementsByTagName("artist")[0].childNodes[0].nodeValue;
@@ -96,8 +97,16 @@ function sr_audio_old_songs() {
                 start_time_song_correction += start_time_song_new;
                 song_name_new = song_name.split(" ").join("+");
                 list += "<li onclick=spotify_old_song(this.id) id=&quot;" + song_name_new + "&quot;>" + start_time_song_correction + " - &quot;" + song_name + "&quot; av " + artist_song + "</li>";
+                $("#old_songs_title").append(list);
+                song_name_new = song_name.split("+").join(" ");
+                console.log(list);
+                spotify_song_url_append(song_name, artist_song);
+                function spotify_song_url_append_callback(results){
+                       console.log(results);
+                };  
+                console.log(test_return);
             }
-            document.getElementById("old_songs_title").innerHTML = list;
+            console.log(list);
         }
     });
 };
@@ -107,10 +116,10 @@ function spotify_old_song(song_name) {
     spotify_song_url_append(song_name_new);
 };
 
-function spotify_song_url_append(title) {
+function spotify_song_url_append(title, artist, callback) {
     $.ajax({
         type: "GET",
-        url: "https://api.spotify.com/v1/search?q=" + title + "&type=track,artist,album&market=SE&limit=1",
+        url: "https://api.spotify.com/v1/search?q=track:" + title + "%20artist:" + artist + "&type=track,artist,album&market=SE&limit=1",
         dataType: "json",
         error: function (response) {
             alert('Error: There was a problem processing your request, please refresh the browser and try again');
@@ -118,13 +127,13 @@ function spotify_song_url_append(title) {
         success: function (response) {
             spotify_song_url = response.tracks.items[0].uri;
             spotify_old_song_url = "https://embed.spotify.com/?uri=" + spotify_song_url;
-            title_new = title.split(" ").join("+");
             iframe = document.createElement("iframe");
             iframe.frameBorder=0;
             iframe.width="300px";
             iframe.height="80px";
             iframe.setAttribute("src", spotify_old_song_url);
-            document.getElementById(title_new).appendChild(iframe);
+            document.getElementById("old_songs_title").appendChild(iframe);
+            spotify_song_url_append_callback(iframe);
         }
     });
 };
