@@ -116,7 +116,7 @@ function spotify_old_song(song_name) {
     spotify_song_url_append(song_name_new);
 };
 
-function spotify_song_url_append(title, artist, callback) {
+function spotify_song_url_append(title, artist) {
     $.ajax({
         type: "GET",
         url: "https://api.spotify.com/v1/search?q=track:" + title + "%20artist:" + artist + "&type=track,artist,album&market=SE&limit=1",
