@@ -34,7 +34,7 @@ function sr_current_songs() {
             alert('Error: There was a problem processing your request, please refresh the browser and try again');
         },
         success: function (response) {
-            title = $(response).find("previoussong title");
+            title = $(response).find("song title");
             if (title.text() == "") {
                 $("#song_title").append("Ingen låt spelas just nu");
                 $("#song_artist").append("");
