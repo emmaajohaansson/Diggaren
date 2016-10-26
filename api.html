@@ -31,14 +31,68 @@
 				GET
 			</p>
 			<h4>Parametrar</h4>
-			<p>
-				Kanal-ID (ex. id=164 för kanal P3)
-			</p>
+			<ul>
+				<li>Kanal-ID (ex. id=164 för kanal P3)</li>
+			</ul>
 			<h4>Returvärde</h4>
 			<p>
 				En XML-fil innehållande en radiospelare med aktuell sändning för SR-kanalen vars ID angetts. Information om kanalen och en SR-bild finns också med i filen.
+			</p>
+			<img src="resources/img/api_get_p3.png">
 			<h4>Beskrivning</h4>
-				
+				<p>
+					Via Soundcheck hämtas en särskild SR-kanals aktuella sändning. I nuläget är endast P3 möjligt att hämta via Soundchecks API, vilket då anges med id 164 i klammerparenteserna.
+				</p>
+			<hr>
+			<h3>Hämta titel och artist för aktuell SR-låt samt hämta låten från Spotify</h3>
+			<h4>Ändpunkt</h4>
+			<p>
+				/v1/channel/{id}/current_song
+			</p>
+			<h4>Metod</h4>
+			<p>
+				GET
+			</p>
+			<h4>Parametrar</h4>
+			<ul>
+				<li>Kanal-ID (ex. id=164 för kanal P3)</li>
+			</ul>
+			<h4>Returvärde</h4>
+			<p>
+				En XML-fil med låtnamn och artist för den aktuella låt som spelas på SR-kanalen samt URL för att hämta denna aktuella låt på Spotify. 
+			</p>
+			<img src="resources/img/p3_current_song.png">
+			<img src="resources/img/api_spotify.png">
+			<h4>Beskrivning</h4>
+				<p>
+					Via Soundcheck hämtas låt och artist för den aktuella låten som spelas på P3, samt möjlighet att hämta denna aktuella låt från Spotify.
+				</p>
+			<hr>
+			<h3>Hämta låt-historik från en SR-kanal, samt motsvarande låtar från Spotify</h3>
+			<h4>Ändpunkt</h4>
+			<p>
+				/v1/channel/{id}/previous_played?limit={amount}
+			</p>
+			<h4>Metod</h4>
+			<p>
+				GET
+			</p>
+			<h4>Parametrar</h4>
+			<ul>
+				<li>Kanal-ID (ex. id=164 för kanal P3)</li>
+				<li>Limit (ex. amount=20)</li>
+			</ul>
+			</p>
+			<h4>Returvärde</h4>
+			<p>
+				En XML-fil innehållande låt-historik från P3 och motsvarande låtar från Spotify. 
+			</p>
+			<img src="resources/img/p3_previous_songs.png">
+			<img src="resources/img/api_spotify.png">
+			<h4>Beskrivning</h4>
+				<p>
+					Via Soundcheck hämtas från en SR-kanal en historik av de låtar som spelats. Antalet låtar som ska visas anges med parametern limit, genom att ange ett tal inom klammerparenteserna. Den returnerade XML-filen ger även möjlighet att hämta motsvarande låtar (de som finns i historiken)från Spotify.
+				</p>
 		</section>
 	</body>
 </html>
