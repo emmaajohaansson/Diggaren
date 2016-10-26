@@ -9,7 +9,6 @@ function sr_p3() {
         },
         success: function (response) {
             find_picture = $(response).find("image");
-			console.log(find_picture.text());
 			sr_picture = document.createElement("img");
 			sr_picture.setAttribute("src", find_picture.text());
 			$("#sr_picture").append(sr_picture);
@@ -22,7 +21,7 @@ function sr_p3() {
 function sr_radio_player(radio_url) {
 	//Skapar en <audio>-tagg i HTML och lägger in radiospelaren där
     radio_player = "<audio controls=controls><source src=" + radio_url + " type=audio/ogg /><source src=" + radio_url + " type=audio/mpeg /></audio>";
-    $("#radio_player").append(radio_player);
+    $("#radio_player_container").append(radio_player);
 };
 
 function sr_current_songs() {
@@ -72,7 +71,6 @@ function spotify_current_song(title, artist) {
     });
 };
 function sr_previous_songs() {
-
 	//Ej klar kommentar
 	//Hämtar de 20 senast spelade låtarna på P3 från Sveriges radios API. 
     $.ajax({
@@ -106,13 +104,15 @@ function sr_previous_songs() {
 };
 
 function spotify_previous_song_player(title) {
-    previous_title = title.split("+").join(" ");
-    previous_title_artist_id = title.split("¤").join(" ");
-    console.log(title)
-    console.log(previous_title_artist_id)
+    previous_title_id = title.split("¤")[0];
+    previous_artist_id = title.split("¤")[1];
+    previous_title = previous_title_id.split("+").join(" ");
+    previous_artist = previous_artist_id.split("+").join(" ");
+    previous_title = previous_title.slice(1);
+    previous_artist = previous_artist.substr(0, previous_artist.length-1);
     $.ajax({
         type: "GET",
-        url: "https://api.spotify.com/v1/search?q=" + previous_title + "&type=track,artist,album&market=SE&limit=1",
+        url: "https://api.spotify.com/v1/search?q=track:" + previous_title + "%20artist:" + previous_artist +  "&type=track,artist,album&market=SE&limit=1",
         dataType: "json",
         error: function (response) {
             alert('Error: There was a problem processing your request, please refresh the browser and try again');
@@ -131,4 +131,5 @@ function spotify_previous_song_player(title) {
 };
 
 sr_p3()
+sr_current_songs()
 sr_previous_songs()
