@@ -148,7 +148,7 @@ function spotify_previous_song_player(title) {
                 document.getElementById(title).appendChild(iframe);
             }
             catch (ReferenceError){ 
-                $(title).remove();
+                $("div#playlist p").remove();
                 var para = document.createElement("p");
                 var node = document.createTextNode("Spotify kunde tyvärr inte hitta låten!");
                 para.appendChild(node);
