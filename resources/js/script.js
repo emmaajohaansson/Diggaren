@@ -34,7 +34,7 @@ function sr_current_songs() {
             alert('Error: There was a problem processing your request, please refresh the browser and try again');
         },
         success: function (response) {
-            title = $(response).find("song title");
+            title = $(response).find("previoussong title");
             if (title.text() == "") {
                 $("#song_title").append("Ingen låt spelas just nu");
                 $("#song_artist").append("");
@@ -68,13 +68,13 @@ function spotify_current_song(title, artist) {
                 element.appendChild(para);
                 console.log(para);
             } else {
-            spotify_song_embed = "https://embed.spotify.com/?uri=" + spotify_song_uri;
-            iframe = document.createElement("iframe");
-            iframe.frameBorder=0;
-            iframe.width="300px";
-            iframe.height="80px";
-            iframe.setAttribute("src", spotify_song_embed);
-            document.getElementById("spotify_current_song").appendChild(iframe);
+                spotify_song_embed = "https://embed.spotify.com/?uri=" + spotify_song_uri;
+                iframe = document.createElement("iframe");
+                iframe.frameBorder=0;
+                iframe.width="300px";
+                iframe.height="80px";
+                iframe.setAttribute("src", spotify_song_embed);
+                document.getElementById("spotify_current_song").appendChild(iframe);
                 console.log("Funkar inte mannen");
         } }
     });
