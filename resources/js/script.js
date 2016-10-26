@@ -151,7 +151,7 @@ function spotify_previous_song_player(title) {
                 var para = document.createElement("p");
                 var node = document.createTextNode("Spotify couldn't find the song, please try another one.");
                 para.appendChild(node);
-                var element = document.getElementById("spotify_current_song");
+                var element = document.getElementById(title);
                 element.appendChild(para);
             }
         }
