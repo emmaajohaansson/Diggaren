@@ -21,7 +21,7 @@ function sr_p3() {
 
 function sr_radio_player(radio_url) {
 	//Skapar en <audio>-tagg i HTML och lägger in radiospelaren där
-    radio_player = "<audio controls=controls><source src=" + song + " type=audio/ogg /><source src=" + song + " type=audio/mpeg /></audio>";
+    radio_player = "<audio controls=controls><source src=" + radio_url + " type=audio/ogg /><source src=" + radio_url + " type=audio/mpeg /></audio>";
     $("#radio_player").append(radio_player);
 };
 
