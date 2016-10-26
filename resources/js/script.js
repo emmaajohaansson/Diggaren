@@ -88,8 +88,7 @@ function spotify_current_song(title, artist) {
     });
 };
 function sr_previous_songs() {
-	//Ej klar kommentar
-	//Hämtar de 20 senast spelade låtarna på P3 från Sveriges radios API. 
+	//Hämtar de 20 senast spelade låtarna på P3 från Sveriges radios API och skriver ut de i en lista.
     $.ajax({
         type: "GET",
         url: "http://api.sr.se/api/v2/playlists/getplaylistbychannelid?id=164&size=20",
@@ -121,6 +120,7 @@ function sr_previous_songs() {
 };
 
 function spotify_previous_song_player(title) {
+    //Skapar en iframe av de tidigare spelade låtarna som innehåller spotify musiken.
     previous_title_id = title.split("¤")[0];
     previous_artist_id = title.split("¤")[1];
     previous_title = previous_title_id.split("+").join(" ");
