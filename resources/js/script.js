@@ -138,7 +138,7 @@ function spotify_previous_song_player(title) {
             try{
                 spotify_song_url = response.tracks.items[0].uri;
                 spotify_old_song_url = "https://embed.spotify.com/?uri=" + spotify_song_url;
-                $('div#playlist iframe').remove();
+                $("div#playlist iframe").remove();
                 iframe = document.createElement("iframe");
                 iframe.frameBorder=0;
                 iframe.width="300px";
@@ -148,8 +148,9 @@ function spotify_previous_song_player(title) {
                 document.getElementById(title).appendChild(iframe);
             }
             catch (ReferenceError){ 
+                $(title).remove();
                 var para = document.createElement("p");
-                var node = document.createTextNode("Spotify couldn't find the song, please try another one.");
+                var node = document.createTextNode("Spotify kunde tyvärr inte hitta låten!");
                 para.appendChild(node);
                 var element = document.getElementById(title);
                 element.appendChild(para);
