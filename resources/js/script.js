@@ -64,11 +64,11 @@ function spotify_current_song(title, artist) {
             }
             
             catch (TypeError){ 
-                var para = document.createElement("p");
-                var node = document.createTextNode("Spotify kunde tyvärr inte hitta låten!");
-                para.appendChild(node);
-                var element = document.getElementById("spotify_current_song");
-                element.appendChild(para);
+                paragraf = document.createElement("p");
+                error_text = document.createTextNode("Spotify kunde tyvärr inte hitta låten!");
+                paragraf.appendChild(error_text);
+                element = document.getElementById("spotify_current_song");
+                element.appendChild(paragraf);
             }
             
             try{
@@ -149,11 +149,11 @@ function spotify_previous_song_player(title) {
                 document.getElementById(title).appendChild(iframe);
             }
             catch (ReferenceError){ 
-                var para = document.createElement("p");
-                var node = document.createTextNode("Spotify kunde tyvärr inte hitta låten!");
-                para.appendChild(node);
-                var element = document.getElementById(title);
-                element.appendChild(para);
+                paragraf = document.createElement("p");
+                error_text = document.createTextNode("Spotify kunde tyvärr inte hitta låten!");
+                paragraf.appendChild(error_text);
+                element = document.getElementById(title);
+                element.appendChild(paragraf);
             }
         }
     });
