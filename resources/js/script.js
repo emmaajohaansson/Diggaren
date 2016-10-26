@@ -1,4 +1,5 @@
 function sr_p3() {
+	//Hämtar en XML-fil från Sveriges radios API innehållande spelaren för Sveriges radio (P3) och en P3-bild. Kallar sedan på funktionen sr_radio_player och skickar med radiospelarens URL.
     $.ajax({
         type: "GET",
         url: "http://api.sr.se/api/v2/channels/164",
@@ -19,11 +20,13 @@ function sr_p3() {
 };
 
 function sr_radio_player(radio_url) {
-    radio_player = "<audio controls=controls><source src=" + radio_url + " type=audio/ogg /><source src=" + radio_url + " type=audio/mpeg /></audio>";
-    $("#radio_player_container").append(radio_player);
+	//Skapar en <audio>-tagg i HTML och lägger in radiospelaren där
+    radio_player = "<audio controls=controls><source src=" + song + " type=audio/ogg /><source src=" + song + " type=audio/mpeg /></audio>";
+    $("#radio_player").append(radio_player);
 };
 
-function sr_current_song() {
+function sr_current_songs() {
+	//Hämtar nuvarande, föregående och nästkommande låttitel och artist från Spotifys API och skriver ut nuvarande låttitel och artist. Kallar sedan på spotify_current_song och skickar med låttitel och artist.
     $.ajax({
         type: "GET",
         url: "http://api.sr.se/api/v2/playlists/rightnow?channelid=164",
@@ -48,6 +51,7 @@ function sr_current_song() {
 };
 
 function spotify_current_song(title, artist) {
+	//Utifrån låttitel och artist för nuvarande låt som hämtades i sr_current_song hämtas samma låt från Spotifys API. Skapar en <iframe>-tagg i HTML som fungerar som Spotify-spelare som kan spela upp den nuvarande låten (utseende på iframen är förutbestämt enligt Spotifys standarder.)
     $.ajax({
         type: "GET",
         url: "https://api.spotify.com/v1/search?q=track:" + title + "%20artist:" + artist + "&type=track,artist,album&market=SE&limit=1",
@@ -67,8 +71,10 @@ function spotify_current_song(title, artist) {
         }
     });
 };
-
 function sr_previous_songs() {
+
+	//Ej klar kommentar
+	//Hämtar de 20 senast spelade låtarna på P3 från Sveriges radios API. 
     $.ajax({
         type: "GET",
         url: "http://api.sr.se/api/v2/playlists/getplaylistbychannelid?id=164&size=20",
