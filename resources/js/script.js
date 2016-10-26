@@ -59,7 +59,10 @@ function spotify_current_song(title, artist) {
             alert('Error: There was a problem processing your request, please refresh the browser and try again');
         },
         success: function (response) {
-            try{ spotify_song_uri = response.tracks.items[0].uri;}
+            try{ 
+                spotify_song_uri = response.tracks.items[0].uri;
+            }
+            
             catch (TypeError){ 
                 var para = document.createElement("p");
                 var node = document.createTextNode("Spotify couldn't find the song, please try another one.");
@@ -68,13 +71,19 @@ function spotify_current_song(title, artist) {
                 element.appendChild(para);
             }
             
-            spotify_song_embed = "https://embed.spotify.com/?uri=" + spotify_song_uri;
-            iframe = document.createElement("iframe");
-            iframe.frameBorder=0;
-            iframe.width="300px";
-            iframe.height="80px";
-            iframe.setAttribute("src", spotify_song_embed);
-            document.getElementById("spotify_current_song").appendChild(iframe);
+            try{
+                spotify_song_embed = "https://embed.spotify.com/?uri=" + spotify_song_uri;
+                iframe = document.createElement("iframe");
+                iframe.frameBorder=0;
+                iframe.width="300px";
+                iframe.height="80px";
+                iframe.setAttribute("src", spotify_song_embed);
+                document.getElementById("spotify_current_song").appendChild(iframe);
+            }
+            
+            catch (ReferenceError){
+                
+            }
         } 
     });
 };
