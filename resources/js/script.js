@@ -65,7 +65,7 @@ function spotify_current_song(title, artist) {
             
             catch (TypeError){ 
                 var para = document.createElement("p");
-                var node = document.createTextNode("Spotify couldn't find the song, please try another one.");
+                var node = document.createTextNode("Spotify kunde tyvärr inte hitta låten!");
                 para.appendChild(node);
                 var element = document.getElementById("spotify_current_song");
                 element.appendChild(para);
