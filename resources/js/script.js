@@ -60,6 +60,14 @@ function spotify_current_song(title, artist) {
         },
         success: function (response) {
             spotify_song_uri = response.tracks.items[0].uri;
+            if (spotify_song_uri == "") {
+                var para = document.createElement("p");
+                var node = document.createTextNode("Spotify couldn't find the song, please try another one.");
+                para.appendChild(node);
+                var element = document.getElementById("spotify_current_song");
+                element.appendChild(para);
+                console.log(para);
+            } else {
             spotify_song_embed = "https://embed.spotify.com/?uri=" + spotify_song_uri;
             iframe = document.createElement("iframe");
             iframe.frameBorder=0;
@@ -67,7 +75,8 @@ function spotify_current_song(title, artist) {
             iframe.height="80px";
             iframe.setAttribute("src", spotify_song_embed);
             document.getElementById("spotify_current_song").appendChild(iframe);
-        }
+                console.log("Funkar inte mannen");
+        } }
     });
 };
 function sr_previous_songs() {
