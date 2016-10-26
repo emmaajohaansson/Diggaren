@@ -39,7 +39,7 @@ h1 {
 	margin-left: 20%;
 }
 
-#radio_player {
+#radio_player_container {
 	margin-left: 20%;
 }
 
@@ -59,7 +59,7 @@ h1 {
     background-color: #3E0030;
 }
 
-#old_songs_title > li{
+#previous_songs_title > li{
     cursor: pointer;
     list-style: none;
 }
