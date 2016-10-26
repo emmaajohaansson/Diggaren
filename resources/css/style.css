@@ -62,4 +62,11 @@ h1 {
 #previous_songs_title > li{
     cursor: pointer;
     list-style: none;
+    border: 1px solid #555;
+    padding: 10px;
+}
+
+.hidden {
+    display: block;
+    padding: 10px;
 }

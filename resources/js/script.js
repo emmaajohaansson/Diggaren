@@ -120,10 +120,12 @@ function spotify_previous_song_player(title) {
         success: function (response) {
             spotify_song_url = response.tracks.items[0].uri;
             spotify_old_song_url = "https://embed.spotify.com/?uri=" + spotify_song_url;
+            $('div#playlist iframe').remove();
             iframe = document.createElement("iframe");
             iframe.frameBorder=0;
             iframe.width="300px";
             iframe.height="80px";
+            iframe.className="hidden";
             iframe.setAttribute("src", spotify_old_song_url);
             document.getElementById(title).appendChild(iframe);
         }
