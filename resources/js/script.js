@@ -135,10 +135,11 @@ function spotify_previous_song_player(title) {
             alert('Error: There was a problem processing your request, please refresh the browser and try again');
         },
         success: function (response) {
+            $("div#playlist p").remove();
+            $("div#playlist iframe").remove();
             try{
                 spotify_song_url = response.tracks.items[0].uri;
                 spotify_old_song_url = "https://embed.spotify.com/?uri=" + spotify_song_url;
-                $("div#playlist iframe").remove();
                 iframe = document.createElement("iframe");
                 iframe.frameBorder=0;
                 iframe.width="300px";
@@ -148,7 +149,6 @@ function spotify_previous_song_player(title) {
                 document.getElementById(title).appendChild(iframe);
             }
             catch (ReferenceError){ 
-                $("div#playlist p").remove();
                 var para = document.createElement("p");
                 var node = document.createTextNode("Spotify kunde tyvärr inte hitta låten!");
                 para.appendChild(node);
