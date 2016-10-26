@@ -1,4 +1,5 @@
 function sr_audio_song() {
+	//Hämtar en XML-fil från Sveriges radios API innehållande spelaren för Sveriges radio (P3) och en P3-bild. Kallar sedan på funktionen sr_radio_player och skickar med radiospelarens URL.
     $.ajax({
         type: "GET",
         url: "http://api.sr.se/api/v2/channels/164",
@@ -21,11 +22,13 @@ function sr_audio_song() {
 };
 
 function song_player_media(song) {
+	//Skapar en <audio>-tagg i HTML och lägger in radiospelaren där
     radio_player = "<audio controls=controls><source src=" + song + " type=audio/ogg /><source src=" + song + " type=audio/mpeg /></audio>";
     $("#radio_player").append(radio_player);
 };
 
 function sr_songs() {
+	//Hämtar nuvarande, föregående och nästkommande låttitel och artist från Spotifys API och skriver ut nuvarande låttitel och artist. Kallar sedan på spotify_current_song och skickar med låttitel och artist.
     $.ajax({
         type: "GET",
         url: "http://api.sr.se/api/v2/playlists/rightnow?channelid=164",
@@ -51,6 +54,7 @@ function sr_songs() {
 };
 
 function spotify_song(title, artist) {
+	//Utifrån låttitel och artist för nuvarande låt som hämtades i sr_current_song hämtas samma låt från Spotifys API. Skapar en <iframe>-tagg i HTML som fungerar som Spotify-spelare som kan spela upp den nuvarande låten (utseende på iframen är förutbestämt enligt Spotifys standarder.)
     $.ajax({
         type: "GET",
         url: "https://api.spotify.com/v1/search?q=track:" + title + "%20artist:" + artist + "&type=track,artist,album&market=SE&limit=1",
@@ -74,6 +78,8 @@ function spotify_song(title, artist) {
 };
 
 function sr_audio_old_songs() {
+	//Ej klar kommentar
+	//Hämtar de 20 senast spelade låtarna på P3 från Sveriges radios API. 
     $.ajax({
         type: "GET",
         url: "http://api.sr.se/api/v2/playlists/getplaylistbychannelid?id=164&size=20",
